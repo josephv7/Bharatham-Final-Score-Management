@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/', function(req, res) {
+app.get('/update', function(req, res) {
 
   var house = req.query.house;
   console.log(house);
