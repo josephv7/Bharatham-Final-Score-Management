@@ -28,7 +28,7 @@ app.get('/update', function(req, res) {
 
   var db = admin.database();
   var fromRef = db.ref(from);
-  var toRef = db.ref('Testscore')
+  var toRef = db.ref('Score')
 
   fromRef.once("value",function(snapshot){
     
@@ -73,6 +73,8 @@ app.get('/copy', function(req,res){
 
     });
 
+  },function(errorObject){
+    console.log("Error reading data inside copy api");
   });
 
 
