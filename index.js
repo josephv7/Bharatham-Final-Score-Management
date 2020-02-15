@@ -63,7 +63,15 @@ app.get('/copy', function(req,res){
 
   fromRef.once("value", function(snapshot){
 
-    toRef.set(snapshot.val());
+    toRef.set(snapshot.val(), function(error){
+
+      if(error){
+        console.log('Copying Error!');
+      }else{
+        console.log('Copying Success!');
+      }
+
+    });
 
   });
 
