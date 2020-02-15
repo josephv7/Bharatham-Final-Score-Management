@@ -44,9 +44,31 @@ app.get('/update', function(req, res) {
 });
 
 
-function updateScore(String){
+app.get('/copy', function(req,res){
 
-}
+
+  
+
+  var fromRef = req.query.from;
+  console.log(fromRef);
+  var toRef = req.query.to;
+  console.log(toRef);
+
+
+  var db = admin.database();
+  var fromRef = db.ref(fromRef);
+  var toRef = db.ref(toRef)
+
+
+
+  fromRef.once("value", function(snapshot){
+
+    toRef.set(snapshot.val());
+
+  });
+
+
+});
 
 
 let server = app.listen(3000, function() {
