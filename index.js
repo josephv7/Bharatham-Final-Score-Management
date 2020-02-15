@@ -7,6 +7,13 @@ const axios = require('axios');
 const cors = require('cors');
 var admin = require('firebase-admin');
 
+var serviceAccount = require("./firebase_config.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://bharatham2020-5015e.firebaseio.com"
+});
+
 let app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
